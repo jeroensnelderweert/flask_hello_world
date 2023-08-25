@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year Progress Bar</title>
+    <style>
+        #progress-container {
+            width: 100%;
+            background-color: #f0f0f0;
+        }
+        
+        #progress-bar {
+            width: 0;
+            height: 30px;
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="progress-container">
+        <div id="progress-bar">0%</div>
+    </div>
+
+    <script>
+        // Get the current date
+        const currentDate = new Date();
+
+        // Get the start and end of the year
+        const yearStart = new Date(currentDate.getFullYear(), 0, 1);
+        const yearEnd = new Date(currentDate.getFullYear() + 1, 0, 1);
+
+        // Calculate the percentage of the year that has passed
+        const percentage = ((currentDate - yearStart) / (yearEnd - yearStart)) * 100;
+
+        // Update the progress bar's width and text
+        const progressBar = document.getElementById("progress-bar");
+        progressBar.style.width = `${percentage}%`;
+        progressBar.innerText = `${percentage.toFixed(2)}%`;
+
+    </script>
+</body>
+</html>
